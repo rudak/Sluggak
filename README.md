@@ -1,0 +1,2 @@
+# Sluggak
+Simple slug library
