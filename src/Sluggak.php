@@ -3,6 +3,21 @@ namespace Rudak\Sluggak;
 
 class Sluggak
 {
+
+    private static $separator = '-';
+    private static $_instance = null;
+
+    private function __construct () { }
+
+    public static function getInstance ()
+    {
+        if (self::$_instance === null) {
+            self::$_instance = new self;
+        }
+
+        return self::$_instance;
+    }
+
     /**
      * @param $string
      * @return a slug from the string $string
@@ -20,11 +35,11 @@ class Sluggak
     private static function slugTheString($str)
     {
         // remplacer ce qui n'est pas une letre par un tiret
-        $text = preg_replace('~[^\\pL\d]+~u', '-', $str);
+        $text = preg_replace('~[^\\pL\d]+~u', self::getSeparator(), $str);
         // virer les accents
         $text = self::enleve_accents($text);
         // trim
-        $text = trim($text, '-');
+        $text = trim($text, self::getSeparator());
         // transliterate
         $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
         // lowercase
@@ -64,5 +79,16 @@ class Sluggak
               'w', 'Y', 'y', 'Y', 'Z', 'z', 'Z', 'z', 'Z', 'z', 's', 'f', 'O', 'o', 'U', 'u', 'A', 'a', 'I', 'i',
               'O', 'o', 'U', 'u', 'U', 'u', 'U', 'u', 'U', 'u', 'U', 'u', 'A', 'a', 'AE', 'ae', 'O', 'o'];
         return str_replace($a, $b, $str);
+    }
+
+    private static function getSeparator()
+    {
+        return self::$separator;
+    }
+
+    public static function setSeparator($separator)
+    {
+        self::$separator = $separator;
+        return self::$_instance;
     }
 }
