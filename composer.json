@@ -4,7 +4,8 @@
   "autoload": {
     "psr-4": {
       "Rudak\\Sluggak\\": "src/",
-      "Rudak\\Sluggak\\Utils\\": "utils/"
+      "Rudak\\Sluggak\\Utils\\": "src/Utils/",
+      "Rudak\\Sluggak\\Twig\\": "src/Twig/"
     }
   }
 }
