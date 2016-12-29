@@ -1,10 +1,12 @@
 <?php
 namespace Rudak\Sluggak\Utils;
 
+use Rudak\Sluggak\Sluggak;
+
 trait Slug
 {
     public function getSlug()
     {
-        return $this->getName();
+        return Sluggak::slugThis($this->getName());
     }
 }

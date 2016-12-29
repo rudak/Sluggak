@@ -1,5 +1,9 @@
 # Sluggak
-Simple static slug library
+Simple static slug library and twig extension for easy slug rendering.
+
+### How to install
+
+    composer require rudak/sluggak
 
 ### How it works
 
