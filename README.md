@@ -26,3 +26,19 @@ You can also chain it like this
 
     echo Sluggak::getInstance()->setSeparator('_')->slugThis("J'ai vraiment de l'énergie à vendre !");
     // ==> j_ai_vraiment_de_l_energie_a_vendre
+
+## Twig integration
+
+You can slug a string directly in your views. Just add it to your services.yml
+
+    app.twig_extension:
+        class: Rudak\Sluggak\Twig\AppExtension
+        public: false
+        tags:
+            - { name: twig.extension }
+
+And use it like this :
+
+    {{ "your string"|slug }}  => your-string
+
+That's all !
